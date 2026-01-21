@@ -1,0 +1,23 @@
+#!/bin/bash
+source ./organizar
+while true; do
+    echo -e "\n--- ORGANIZADOR DE ARCHIVOS ---"
+    echo "1. Organizar Imágenes (.jpg)"
+    echo "2. Organizar Documentos (.pdf)"
+    echo "3. Organizar Datos (.csv)"
+    echo "4. Organizar de manera personalizada"
+    echo "5. Salir"
+    read -p "Elige una opción: " opcion
+
+    case $opcion in
+        1) organizar "jpg" "imagenes" ;;
+        2) organizar "pdf" "documentos" ;;
+        3) organizar "csv" "datos" ;;
+        4) 
+           read -r -p "ingrese la extension que desee ordenar sin el ." ext
+           read -r -p "ingrese el nombre de la carpeta que desea tener" carpeta
+           organizar "$ext" "$carpeta" ;;
+        5) break ;;
+        *) echo "Opción no válida"
+    esac
+done

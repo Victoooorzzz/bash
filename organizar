@@ -1,0 +1,21 @@
+#!/bin/bash
+# Una sola función que recibe 2 parámetros: la extensión y la carpeta destino
+organizar() {
+     local ext=$1
+     local carpeta=$2
+
+     # El comando 'ls' fallará si no hay archivos, así que usamos un if preventivo
+     if ls *."$ext" >/dev/null 2>&1; then
+         mkdir -p "$carpeta" 
+         for archivo in *."$ext"; do
+             if [[ -e "$carpeta/$archivo" ]]; then
+                 echo "Skipping: $archivo (ya existe)"
+             else
+                 mv "$archivo" "$carpeta/"
+                 echo "Ok: $archivo movido a $carpeta/"
+             fi
+         done
+     else
+         echo "No hay archivos .$ext para organizar."
+     fi
+ }
