@@ -16,6 +16,6 @@ echo -n "MEMORIA:"
 memoriatotal=$(free -m | awk '/Mem:/ { print $2 }')
 memoriausada=$(free -m | awk '/Mem:/ { print $3 }')
 memoriaporcen=$(( 100 * memoriausada / memoriatotal ))
-echo "Memoria: ${memoriaporcen}% en uso ($memoriausada MB / $memoriatotal MB)"
+echo " ${memoriaporcen}% en uso ($memoriausada MB / $memoriatotal MB)"
 
 
